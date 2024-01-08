@@ -5,6 +5,7 @@ command = {
  	'Найти': 3,
   'Показать_все': 4,
   'Удалить': 5,
+  'Копировать': 6,
   'Выход': 9
 }
 data_name = ['имя','телефон','комментарии']
@@ -94,6 +95,16 @@ def processor(command):
         print('Нет такой записи(')
       print()
       
+    elif command['Копировать']==int(answer):
+      index_true = search(list_all)
+      if len(index_true):
+        copy_list=to_list('copy_contact.txt', 'r')
+        for i in index_true:
+          copy_list.append(list_all[i])
+        to_file('copy_contact.txt',copy_list, 'w')     
+      else:
+        print('Нет такой записи(')
+      print() 
     elif command['Удалить']==int(answer):
       index_true = search(list_all)
       if len(index_true):
