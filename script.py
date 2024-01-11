@@ -25,13 +25,13 @@ def checkNull(item):
 def to_list(file, flag):
   base_data = []
   if os.path.isfile(file):
-    with open(f'{file}', f'{flag}') as data:
+    with open(file, flag) as data:
       for line in data:
         base_data.append(line.split())
   return base_data
 
-def to_file(file,list, flag):
-  with open(f'{file}', f'{flag}') as data:
+def to_file(file, list, flag):
+  with open(file, flag) as data:
     for i in list:
       data.write(f'{" ".join(i)}\n')
   data.close()
@@ -50,7 +50,6 @@ def processor(command):
   while command['Выход'] != int(answer):
     answer = panel('Панель управления:','Введите команду -> ', command)
     list_all = to_list('phone.txt', 'r')
-    
     if command['Создать'] == int(answer):
       new_contact=[]
       for i in data_name:
@@ -114,5 +113,6 @@ def processor(command):
       else:
         print('Нет такой записи(')
       print()
+      
 					
 processor(command)      
